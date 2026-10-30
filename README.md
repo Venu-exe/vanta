@@ -8,7 +8,7 @@ Scopes that fail closed. Attack paths, not flat lists. Evidence you can prove.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-a855f7.svg?style=flat-square)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab.svg?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
-[![Tests](https://img.shields.io/badge/tests-35%20passing-22c55e.svg?style=flat-square)](#testing)
+[![CI](https://github.com/Venu-exe/vanta/actions/workflows/ci.yml/badge.svg)](https://github.com/Venu-exe/vanta/actions/workflows/ci.yml)
 [![Dependencies](https://img.shields.io/badge/runtime%20deps-0-22c55e.svg?style=flat-square)](#why-vanta)
 [![MITRE ATT&CK](https://img.shields.io/badge/mapped%20to-MITRE%20ATT%26CK-red.svg?style=flat-square)](docs/METHODOLOGY.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-a855f7.svg?style=flat-square)](#contributing)
