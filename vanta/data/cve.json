@@ -1,0 +1,105 @@
+{
+  "_comment": "Sample offline knowledge base for the cve-correlate module. Structure matters more than size: add real entries or refresh from the NVD API in a live engagement.",
+  "entries": [
+    {
+      "cve": "CVE-2021-44228",
+      "product": "log4j",
+      "affected_below": "2.17.0",
+      "cvss": 10.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "cwe": "CWE-502",
+      "description": "Log4Shell: JNDI lookups in Log4j2 allow remote code execution via attacker-controlled log messages.",
+      "impact": "Unauthenticated remote code execution on any service that logs user input.",
+      "remediation": "Upgrade Log4j to 2.17.1 or later, or set log4j2.formatMsgNoLookups=true as a stopgap."
+    },
+    {
+      "cve": "CVE-2017-5638",
+      "product": "struts",
+      "affected_below": "2.5.11",
+      "cvss": 10.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "cwe": "CWE-20",
+      "description": "Apache Struts Jakarta Multipart parser remote code execution via crafted Content-Type.",
+      "impact": "Unauthenticated remote code execution.",
+      "remediation": "Upgrade Struts to 2.5.13+ and sanitise the Content-Type header."
+    },
+    {
+      "cve": "CVE-2022-22965",
+      "product": "spring",
+      "affected_below": "5.3.18",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "cwe": "CWE-94",
+      "description": "Spring4Shell: data binding on JDK 9+ allows modification of class loader properties leading to RCE.",
+      "impact": "Remote code execution on Spring MVC applications running on Tomcat.",
+      "remediation": "Upgrade Spring Framework to 5.3.18+ / 5.2.20+."
+    },
+    {
+      "cve": "CVE-2019-16759",
+      "product": "vbulletin",
+      "affected_below": "5.5.4",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "cwe": "CWE-94",
+      "description": "vBulletin 5.x pre-auth remote code execution via the widgetConfig parameter.",
+      "impact": "Unauthenticated remote code execution.",
+      "remediation": "Upgrade vBulletin and remove the routing widget handler."
+    },
+    {
+      "cve": "CVE-2021-3129",
+      "product": "laravel",
+      "affected_below": "8.4.2",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "cwe": "CWE-502",
+      "description": "Laravel Ignition debug mode deserialisation issue leads to remote code execution.",
+      "impact": "Remote code execution when debug mode (APP_DEBUG=true) is enabled.",
+      "remediation": "Upgrade ignition to 2.5.2+ and disable APP_DEBUG in production."
+    },
+    {
+      "cve": "CVE-2020-0796",
+      "product": "smbv3",
+      "affected_below": "10.0.19041",
+      "cvss": 10.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "cwe": "CWE-119",
+      "description": "SMBGhost: integer overflow in SMBv3 compression allows remote code execution.",
+      "impact": "Wormable remote code execution against SMBv3 servers.",
+      "remediation": "Apply KB4551762 and disable SMBv3 compression."
+    },
+    {
+      "cve": "CVE-2019-0708",
+      "product": "rdp",
+      "affected_below": "10.0.17763",
+      "cvss": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "cwe": "CWE-416",
+      "description": "BlueKeep: use-after-free in Remote Desktop Services allows remote code execution.",
+      "impact": "Wormable, unauthenticated remote code execution on exposed RDP.",
+      "remediation": "Patch RDP, enable NLA, and never expose RDP directly to the internet."
+    },
+    {
+      "cve": "CVE-2021-23017",
+      "product": "nginx",
+      "affected_below": "1.21.0",
+      "cvss": 7.7,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:H",
+      "cwe": "CWE-193",
+      "description": "Off-by-one in the nginx resolver allows a specially crafted DNS response to overwrite memory.",
+      "impact": "Potential worker-process compromise or DoS in configurations using the resolver directive.",
+      "remediation": "Upgrade nginx to 1.21.0 / 1.20.1 or later."
+    },
+    {
+      "cve": "CVE-2023-44487",
+      "product": "http2",
+      "affected_below": "0",
+      "cvss": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "cwe": "CWE-400",
+      "description": "HTTP/2 Rapid Reset: request cancellation abuse enables record-breaking DoS attacks.",
+      "impact": "Denial of service against HTTP/2 endpoints.",
+      "remediation": "Apply vendor patches and enforce stream-reset limits.",
+      "requires_version": false
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+# Example engagement definition (YAML form).
+# Requires PyYAML: `pip install PyYAML`. A JSON equivalent lives next to this
+# file if you want to run with zero dependencies.
+name: acme-external-2026
+client: Acme Corporation
+authorisation_reference: SOW-2026-0042
+
+scope:
+  label: acme external
+  in_scope:
+    - acme.com
+    - "*.acme.com"
+  out_of_scope:
+    - billing.acme.com
+    - status.acme.com
+
+modules:
+  - subdomains
+  - portscan
+  - techdetect
+  - http-headers
+  - tls-audit
+  - crawler
+  - sqli
+  - xss
+  - ssrf
+  - cve-correlate
+
+metadata:
+  rate_limit: 5
+  concurrency: 8
+  # Point this at your collaborator/interactsh URL in a live assessment.
+  ssrf_callback: "https://your-collaborator.example/vanta"
+  # Provide tokens for the jwt module to analyse.
+  jwt_tokens: []
+  # Optionally pin components for cve-correlate when fingerprinting is uncertain.
+  components:
+    nginx: "1.18.0"

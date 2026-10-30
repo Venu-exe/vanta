@@ -1,0 +1,14 @@
+{
+  "label": "acme bug bounty programme",
+  "in_scope": [
+    "acme.com",
+    "*.acme.com",
+    "https://api.acme.com/v2",
+    "10.10.0.0/16"
+  ],
+  "out_of_scope": [
+    "billing.acme.com",
+    "internal.acme.com",
+    "status.acme.com"
+  ]
+}

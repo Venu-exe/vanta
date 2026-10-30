@@ -1,0 +1,31 @@
+{
+  "name": "demo-lab",
+  "client": "VANTA Lab (self-owned)",
+  "authorisation_reference": "LAB-DEMO-2026-001",
+  "scope": {
+    "label": "vanta demo lab",
+    "in_scope": ["127.0.0.1"],
+    "out_of_scope": []
+  },
+  "modules": [
+    "subdomains",
+    "portscan",
+    "techdetect",
+    "http-headers",
+    "tls-audit",
+    "crawler",
+    "sqli",
+    "xss",
+    "ssrf"
+  ],
+  "metadata": {
+    "scheme": "http",
+    "port": 8000,
+    "rate_limit": 20,
+    "concurrency": 10,
+    "ports": [8000, 8080],
+    "subdomain_limit": 20,
+    "crawl_max_pages": 5,
+    "ssrf_callback": "http://127.0.0.1:1/vanta-canary"
+  }
+}

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vanta"
+version = "0.1.0"
+description = "VANTA - a red-team-minded penetration testing and bug bounty framework"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "VANTA Project" }]
+keywords = ["security", "pentest", "bug-bounty", "red-team", "attack-path", "mitre-attack"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Education",
+  "Topic :: Security",
+  "Programming Language :: Python :: 3",
+]
+# Core has ZERO runtime dependencies on purpose: it runs anywhere, offline,
+# which makes it trivial to demo and to grade.
+dependencies = []
+
+[project.optional-dependencies]
+# Niceties only. The framework degrades gracefully when these are absent.
+ui = ["rich>=13.0"]
+yaml = ["PyYAML>=6.0"]
+dev = ["pytest>=7.0", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+vanta = "vanta.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["vanta*"]
+
+[tool.setuptools.package-data]
+vanta = ["data/*.json", "data/*.txt", "data/templates/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

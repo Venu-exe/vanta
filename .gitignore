@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# Engagement output is sensitive - never commit it.
+engagements/
+*.vanta.log
+ops.jsonl
+evidence/
+
+.pytest_cache/
+.coverage
+htmlcov/

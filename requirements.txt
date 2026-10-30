@@ -1,0 +1,6 @@
+# VANTA core intentionally ships with no hard dependencies.
+# These are optional extras that unlock nicer output and YAML scopes.
+rich>=13.0     # coloured tables/panels in the CLI (falls back to plain text)
+PyYAML>=6.0    # parse YAML scope/engagement files (JSON works with stdlib alone)
+pytest>=7.0    # test suite
+pytest-asyncio>=0.23
