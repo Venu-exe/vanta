@@ -1,0 +1,26 @@
+{
+  "name": "scanme-nmap-org",
+  "client": "Nmap Project (publicly authorised test host)",
+  "authorisation_reference": "https://scanme.nmap.org/ — 'You are authorized to scan this machine'",
+  "scope": {
+    "label": "scanme.nmap.org",
+    "in_scope": ["scanme.nmap.org"],
+    "out_of_scope": []
+  },
+  "modules": [
+    "subdomains",
+    "portscan",
+    "techdetect",
+    "http-headers",
+    "crawler"
+  ],
+  "metadata": {
+    "scheme": "http",
+    "port": 80,
+    "rate_limit": 2,
+    "concurrency": 5,
+    "port_timeout": 2.5,
+    "subdomain_limit": 40,
+    "crawl_max_pages": 10
+  }
+}

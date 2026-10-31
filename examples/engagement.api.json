@@ -1,0 +1,31 @@
+{
+  "name": "api-security-review",
+  "client": "Acme Corp — API assessment",
+  "authorisation_reference": "SOW-2026-0120",
+  "scope": {
+    "label": "acme api",
+    "in_scope": ["api.acme.com"],
+    "out_of_scope": []
+  },
+  "modules": [
+    "techdetect",
+    "http-headers",
+    "tls-audit",
+    "crawler",
+    "sqli",
+    "ssrf",
+    "jwt"
+  ],
+  "metadata": {
+    "scheme": "https",
+    "port": 443,
+    "rate_limit": 10,
+    "concurrency": 8,
+    "crawl_max_pages": 60,
+    "ssrf_callback": "https://YOUR-COLLABORATOR.oast.pro/vanta",
+    "jwt_tokens": [
+      "PASTE.AN.OBSERVED.TOKEN_HERE"
+    ],
+    "notes": "jwt module works offline on tokens you supply; paste real tokens you are authorised to handle."
+  }
+}

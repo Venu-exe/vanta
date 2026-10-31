@@ -44,6 +44,8 @@ $ python3 -m vanta scan --engagement examples/engagement.demo.json --allow-activ
 - [Quickstart](#quickstart)
 - [Usage](#usage)
 - [What it does](#what-it-does)
+- [Examples](#examples)
+- [Tools](#tools)
 - [Adding a module in 12 lines](#adding-a-module-in-12-lines)
 - [Testing](#testing)
 - [Documentation](#documentation)
@@ -168,6 +170,58 @@ python3 -m vanta evidence verify engagements/app-example-com
 
 ---
 
+## Examples
+
+Ready-to-run engagement files in [`examples/`](examples/) — copy one and edit the hosts.
+
+| Example | Scenario |
+|---|---|
+| [`engagement.scanme.json`](examples/engagement.scanme.json) | **A real, authorised host** — `scanme.nmap.org`, which the Nmap project permits scanning |
+| [`engagement.demo.json`](examples/engagement.demo.json) | Local vulnerable lab on loopback (`make demo`) |
+| [`engagement.bugbounty.json`](examples/engagement.bugbounty.json) | Bug bounty programme — wildcards, exclusions, conservative rate |
+| [`engagement.internal.json`](examples/engagement.internal.json) | Internal network — CIDR ranges with carved-out exceptions |
+| [`engagement.api.json`](examples/engagement.api.json) | API review — JWT analysis, SSRF callbacks, injection |
+| [`engagement.passive.json`](examples/engagement.passive.json) | Passive only — no active modules |
+| [`engagement.multi.json`](examples/engagement.multi.json) | Several targets, findings grouped per host |
+
+```console
+$ python3 -m vanta scan --engagement examples/engagement.scanme.json --allow-active
+
+  Engagement : scanme-nmap-org
+  Targets    : 1
+  Findings   : 6
+  Risk score : 6.4/100  (grade A)
+  Severity   : critical:0, high:0, medium:1, low:0
+  Attack paths:
+    - scanme.nmap.org → 6 missing security header(s) on scanme.nmap.org
+```
+
+Real findings from that run: `22, 80` open, SSH banner
+`SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.13`, and six missing security headers.
+
+See [`docs/USAGE.md`](docs/USAGE.md) for the full walkthrough.
+
+## Tools
+
+Standalone, dependency-free helpers in [`tools/`](tools/).
+
+| Tool | Purpose |
+|---|---|
+| [`import_scope.py`](tools/import_scope.py) | Convert a bug-bounty programme scope (HackerOne/Bugcrowd JSON, CSV, or plain text) into a VANTA scope + engagement file |
+| [`to_sarif.py`](tools/to_sarif.py) | Export `results.json` as **SARIF 2.1.0** for GitHub Code Scanning and CI annotations |
+| [`compare_runs.py`](tools/compare_runs.py) | Diff two runs → **fixed / new / still open**; exit code 1 on regressions, so it works as a gate |
+
+```console
+$ python3 tools/compare_runs.py run-week1.json run-week2.json
+Risk score: 40.1 -> 12.5  (▼ improved)
+
+FIXED (2)
+  ✓ [critical] sqli      SQL injection in parameter 'id' (app.acme.com)
+  ✓ [high    ] xss       Reflected XSS in parameter 'q' (app.acme.com)
+NEW (1)
+  ✗ [medium  ] headers   3 missing security header(s) (staging.acme.com)
+```
+
 ## Adding a module in 12 lines
 
 Drop a file under `vanta/modules/<category>/` and decorate a class — `vanta modules`
@@ -219,6 +273,7 @@ The suite covers the parts that must not break:
 
 | Doc | Contents |
 |---|---|
+| [Usage guide](docs/USAGE.md) | Step-by-step real-world walkthrough, recipes, troubleshooting |
 | [Architecture](docs/ARCHITECTURE.md) | Component design, data flow, scope algorithm, risk model |
 | [Methodology](docs/METHODOLOGY.md) | Kill-chain phases, module → ATT&CK mapping |
 | [Threat model](docs/THREAT_MODEL.md) | What VANTA protects, threats, explicit non-goals |

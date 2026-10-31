@@ -1,0 +1,7 @@
+[
+  {"identifier": "acme.com", "asset_type": "DOMAIN", "eligible_for_submission": true},
+  {"identifier": "*.acme.com", "asset_type": "WILDCARD", "eligible_for_submission": true},
+  {"identifier": "api.acme.com", "asset_type": "URL", "eligible_for_submission": true},
+  {"identifier": "billing.acme.com", "asset_type": "URL", "eligible_for_submission": false},
+  {"identifier": "status.acme.com", "asset_type": "URL", "eligible_for_submission": false}
+]

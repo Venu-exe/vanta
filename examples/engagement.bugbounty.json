@@ -1,0 +1,44 @@
+{
+  "name": "bugbounty-acme-web",
+  "client": "Acme Corp bug bounty programme (via HackerOne/Bugcrowd)",
+  "authorisation_reference": "https://hackerone.com/acme — policy accepted 2026-10-01, safe harbour applies",
+  "scope": {
+    "label": "acme public programme",
+    "in_scope": [
+      "acme.com",
+      "*.acme.com",
+      "api.acme.com",
+      "https://app.acme.com/api/v2"
+    ],
+    "out_of_scope": [
+      "billing.acme.com",
+      "internal.acme.com",
+      "status.acme.com",
+      "support.acme.com",
+      "*.acme.dev"
+    ]
+  },
+  "modules": [
+    "subdomains",
+    "portscan",
+    "techdetect",
+    "http-headers",
+    "tls-audit",
+    "crawler",
+    "sqli",
+    "xss",
+    "ssrf",
+    "jwt",
+    "cve-correlate"
+  ],
+  "metadata": {
+    "rate_limit": 5,
+    "concurrency": 8,
+    "crawl_max_pages": 50,
+    "crawl_max_depth": 3,
+    "subdomain_limit": 300,
+    "ports": [80, 443, 8080, 8443],
+    "ssrf_callback": "https://YOUR-COLLABORATOR.oast.pro/vanta",
+    "notes": "Programme forbids DoS, brute force and automated exploitation. Keep rate low and stop if you see 429s."
+  }
+}

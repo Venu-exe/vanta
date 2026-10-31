@@ -1,0 +1,30 @@
+{
+  "name": "multi-target-sprint",
+  "client": "Acme Corp — pre-release sprint",
+  "authorisation_reference": "SOW-2026-0131",
+  "scope": {
+    "label": "three staging hosts",
+    "in_scope": [
+      "staging.acme.com",
+      "api-staging.acme.com",
+      "www.acme.com"
+    ],
+    "out_of_scope": [
+      "prod.acme.com"
+    ]
+  },
+  "modules": [
+    "techdetect",
+    "http-headers",
+    "tls-audit",
+    "crawler",
+    "xss",
+    "sqli"
+  ],
+  "metadata": {
+    "rate_limit": 4,
+    "concurrency": 6,
+    "crawl_max_pages": 20,
+    "notes": "Each host in scope is scanned in turn; findings are grouped per host in the report."
+  }
+}

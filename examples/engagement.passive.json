@@ -1,0 +1,23 @@
+{
+  "name": "passive-recon-only",
+  "client": "Acme Corp — passive footprinting (no active tests)",
+  "authorisation_reference": "SOW-2026-0122 — passive collection only",
+  "scope": {
+    "label": "acme passive",
+    "in_scope": ["acme.com", "*.acme.com"],
+    "out_of_scope": []
+  },
+  "modules": [
+    "subdomains",
+    "techdetect",
+    "http-headers",
+    "tls-audit",
+    "cve-correlate"
+  ],
+  "metadata": {
+    "rate_limit": 3,
+    "concurrency": 5,
+    "subdomain_limit": 200,
+    "notes": "Run WITHOUT --allow-active. Nothing here is intrusive: DNS lookups and a few GETs."
+  }
+}
